@@ -1,35 +1,55 @@
-export default function Engage() {
+export default function EngagePage() {
   return (
-    <main className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-      <h1 className="text-5xl font-semibold mb-6">Let’s Build the Future</h1>
+    <section className="relative px-6 pt-32 pb-40 max-w-3xl mx-auto">
+      {/* Background fade */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black/90 to-black" />
 
-      <form className="grid gap-6 max-w-3xl">
-        <input className="p-4 rounded-lg bg-white/5 border border-white/10" placeholder="Name" />
-        <input className="p-4 rounded-lg bg-white/5 border border-white/10" placeholder="Email" />
-        <input className="p-4 rounded-lg bg-white/5 border border-white/10" placeholder="Company" />
-        <textarea className="p-4 h-32 rounded-lg bg-white/5 border border-white/10" placeholder="Tell us about your project..." />
-        <button className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200">
+      {/* Header */}
+      <header className="mb-16 text-center">
+        <h1 className="text-4xl sm:text-5xl font-semibold mb-4">
+          Start Your Project
+        </h1>
+        <p className="text-gray-400 text-lg">
+          Tell us about your idea and we’ll explore how to bring it to life.
+        </p>
+      </header>
+
+      {/* Form */}
+      <form className="space-y-6">
+        <input
+          type="text"
+          placeholder="Name"
+          className="w-full rounded-xl bg-black/40 border border-white/10 px-5 py-4 focus:outline-none focus:border-white/30"
+        />
+
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full rounded-xl bg-black/40 border border-white/10 px-5 py-4 focus:outline-none focus:border-white/30"
+        />
+
+        <input
+          type="text"
+          placeholder="Company"
+          className="w-full rounded-xl bg-black/40 border border-white/10 px-5 py-4 focus:outline-none focus:border-white/30"
+        />
+
+        <textarea
+          rows={5}
+          placeholder="Tell us about your project..."
+          className="w-full rounded-xl bg-black/40 border border-white/10 px-5 py-4 focus:outline-none focus:border-white/30"
+        />
+
+        <button
+          type="submit"
+          className="w-full mt-8 py-4 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
+        >
           Submit
         </button>
       </form>
-    </main>
+
+      {/* Spacer to guarantee footer visibility */}
+      <div className="h-32" />
+    </section>
   );
 }
-<section className="mt-24 border-t border-white/10 pt-16">
-  <h2 className="text-3xl font-semibold mb-6">
-    Follow Our Thinking
-  </h2>
-
-  <p className="text-gray-400 max-w-xl mb-10">
-    We share design intelligence, immersive storytelling, and behind-the-scenes
-    perspectives across our social channels.
-  </p>
-
-  <div className="flex flex-wrap gap-4">
-    <a href="https://www.youtube.com/@una_creativehub" target="_blank">YouTube</a>
-    <a href="https://instagram.com/una_creativehub/" target="_blank">Instagram</a>
-    <a href="https://x.com/una_creativehub" target="_blank">X</a>
-    <a href="https://facebook.com/profile.php?id=61567309206086" target="_blank">Facebook</a>
-    <a href="https://pinterest.com/una_creativehub" target="_blank">Pinterest</a>
-  </div>
-</section>

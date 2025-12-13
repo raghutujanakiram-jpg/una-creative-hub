@@ -6,8 +6,33 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "UNA Creative Hub",
-  description: "Designing the Future of Human Experience.",
+  metadataBase: new URL("https://unacreativehub.agency"),
+  title: {
+    default: "UNA Creative Hub – Designing the Future of Human Experience",
+    template: "%s | UNA Creative Hub",
+  },
+  description:
+    "UNA Creative Hub is a cinematic, immersive design studio building intelligent creative systems for brands, products, and industries.",
+  openGraph: {
+    title: "UNA Creative Hub",
+    description: "Designing the Future of Human Experience",
+    url: "https://unacreativehub.agency",
+    siteName: "UNA Creative Hub",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UNA Creative Hub",
+    description: "Designing the Future of Human Experience",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

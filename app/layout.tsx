@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollProgress from "./components/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,15 +40,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <body
-        className={`bg-black text-white ${inter.className} min-h-screen flex flex-col`}
-      >
+        className={`bg-black text-white flex flex-col min-h-screen ${inter.className}`}>
         <Navbar />
-
-        <main className="flex-1">
-          {children}
+        <main className="flex-grow">
+      <PageTransition>{children}</PageTransition>
         </main>
-
         <Footer />
       </body>
     </html>

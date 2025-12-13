@@ -14,25 +14,23 @@ export const metadata = {
   description:
     "UNA Creative Hub is a cinematic, immersive design studio building intelligent creative systems for brands, products, and industries.",
   openGraph: {
-    title: "UNA Creative Hub",
-    description: "Designing the Future of Human Experience",
-    url: "https://unacreativehub.agency",
-    siteName: "UNA Creative Hub",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "UNA Creative Hub",
-    description: "Designing the Future of Human Experience",
-    images: ["/og-image.png"],
-  },
+  title: "UNA Creative Hub",
+  description: "Designing the Future of Human Experience",
+  url: "https://unacreativehub.agency",
+  siteName: "UNA Creative Hub",
+  images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  type: "website",
+},
+
+other: {
+  "sameAs": [
+    "https://www.youtube.com/@una_creativehub",
+    "https://instagram.com/una_creativehub/",
+    "https://x.com/una_creativehub",
+    "https://facebook.com/profile.php?id=61567309206086",
+    "https://pinterest.com/una_creativehub",
+  ],
+},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

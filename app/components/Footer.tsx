@@ -1,8 +1,77 @@
+import Link from "next/link";
+
+const socials = [
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@una_creativehub",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/una_creativehub/",
+  },
+  {
+    name: "X (Twitter)",
+    href: "https://x.com/una_creativehub",
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/profile.php?id=61567309206086",
+  },
+  {
+    name: "Pinterest",
+    href: "https://pinterest.com/una_creativehub",
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 py-10 mt-20 bg-black">
-      <div className="max-w-7xl mx-auto text-center text-gray-400 text-sm">
-        <p>© {new Date().getFullYear()} UNA Creative Hub. All rights reserved.</p>
+    <footer className="border-t border-white/10 bg-black">
+      <div className="max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-3">
+
+        {/* Brand */}
+        <div>
+          <h3 className="text-lg font-medium mb-3">UNA Creative Hub</h3>
+          <p className="text-gray-400 text-sm max-w-sm">
+            A cinematic, immersive design studio crafting intelligent creative
+            systems for brands, products, and industries worldwide.
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <div>
+          <h4 className="text-sm font-medium mb-4">Navigate</h4>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/solutions">Solutions</Link></li>
+            <li><Link href="/work">Work</Link></li>
+            <li><Link href="/insights">Insights</Link></li>
+            <li><Link href="/engage">Engage</Link></li>
+          </ul>
+        </div>
+
+        {/* Social */}
+        <div>
+          <h4 className="text-sm font-medium mb-4">Connect</h4>
+          <ul className="space-y-2 text-sm text-gray-400">
+            {socials.map((social) => (
+              <li key={social.name}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  {social.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <div className="text-center text-xs text-gray-500 pb-6">
+        © {new Date().getFullYear()} UNA Creative Hub. All rights reserved.
       </div>
     </footer>
   );

@@ -42,15 +42,12 @@ export default function RootLayout({
       <body
         className={`bg-black text-white ${inter.className} min-h-screen flex flex-col`}
       >
-        {/* Fixed / Sticky Navbar */}
         <Navbar />
 
-        {/* Page Content */}
         <main className="flex-1">
           {children}
         </main>
 
-        {/* Global Footer */}
         <Footer />
       </body>
     </html>

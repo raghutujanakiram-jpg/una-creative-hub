@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useReveal } from "../hooks/useReveal";
 
 const socials = [
   { name: "YouTube", href: "https://www.youtube.com/@una_creativehub" },
@@ -9,12 +13,30 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+
   return (
-    <footer className="relative bg-black border-t border-white/10">
-      {/* Soft glow separator */}
+    <footer
+      ref={ref}
+      className={`relative bg-black border-t border-white/10 transition-all duration-1000 ease-out
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}
+      `}
+    >
+      {/* Watermark */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.04]">
+        <Image
+          src="/una-logo.png"
+          alt="UNA watermark"
+          width={420}
+          height={140}
+          priority={false}
+        />
+      </div>
+
+      {/* Glow separator */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 py-20 grid gap-12 md:grid-cols-3">
+      <div className="relative max-w-7xl mx-auto px-6 py-20 grid gap-12 md:grid-cols-3">
         {/* Brand */}
         <div>
           <h3 className="text-lg font-medium mb-4">UNA Creative Hub</h3>
@@ -56,7 +78,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-xs text-gray-500 pb-8">
+      <div className="relative text-center text-xs text-gray-500 pb-8">
         © {new Date().getFullYear()} UNA Creative Hub. All rights reserved.
       </div>
     </footer>

@@ -2,9 +2,8 @@ export const metadata = {
   title: "Solutions",
   description: "Future-ready design and immersive creative solutions.",
 };
-
 import Link from "next/link";
-
+import SectionProgress from "../components/SectionProgress";
 const services = [
   { title: "Neural Branding Systems", slug: "neural-branding" },
   { title: "Hyper-Real Digital Humans", slug: "digital-humans" },
@@ -36,5 +35,22 @@ export default function Solutions() {
         ))}
       </div>
     </main>
+  );
+}
+export default function SolutionsPage() {
+  return (
+    <>
+      <SectionProgress
+        sections={[
+          "adaptive-ux",
+          "digital-humans",
+          "xr-commerce",
+        ]}
+      />
+
+      <section id="adaptive-ux">...</section>
+      <section id="digital-humans">...</section>
+      <section id="xr-commerce">...</section>
+    </>
   );
 }

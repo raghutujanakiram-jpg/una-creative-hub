@@ -44,7 +44,11 @@ export default function RootLayout({
       <body className={`bg-black text-white ${inter.className}`}>
         <ScrollProgress />
         <Navbar />
-        <main className="pt-20">{children}</main>
+
+        <main className="pt-20 min-h-screen">
+          <PageTransition>{children}</PageTransition>
+        </main>
+
         <Footer />
       </body>
     </html>

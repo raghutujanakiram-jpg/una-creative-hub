@@ -40,13 +40,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      
-      <body
-        className={`bg-black text-white flex flex-col min-h-screen ${inter.className}`}>
+      <body className={`bg-black text-white ${inter.className}`}>
+        <ScrollProgress />
         <Navbar />
-        <main className="flex-grow">
-      <PageTransition>{children}</PageTransition>
-        </main>
+        <main className="pt-20">{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 export default function ScrollProgress() {
   const [progress, setProgress] = useState(0);
-  const pathname = usePathname();
 
   useEffect(() => {
     const updateProgress = () => {
@@ -18,15 +16,16 @@ export default function ScrollProgress() {
       setProgress(scrolled);
     };
 
-    updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
 
     return () => window.removeEventListener("scroll", updateProgress);
-  }, [pathname]); // reset on route change
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 z-[60] h-[2px] w-full bg-transparent">
-      <div className="h-full bg-gradient-to-r from-white via-white/90 to-white/60 transition-[width] duration-75 ease-linear"
+      <div
+        className="h-full bg-white transition-[width] duration-75 ease-linear"
         style={{ width: `${progress}%` }}
       />
     </div>

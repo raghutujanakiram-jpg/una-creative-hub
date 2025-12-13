@@ -1,32 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-xl border-b border-white/5"
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500
+        ${scrolled
+          ? "bg-black/70 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent"}
+      `}
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/">
           <Image
             src="/una-logo.png"
             alt="UNA Creative Hub"
-            width={120}
-            height={60}
-            className="cursor-pointer"
+            width={110}
+            height={55}
+            priority
           />
         </Link>
 
-        {/* Nav links */}
-        <div className="flex gap-8 text-sm tracking-wide">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex gap-8 text-sm tracking-wide">
           <Link href="/about" className="hover:text-gray-300 transition">About</Link>
           <Link href="/solutions" className="hover:text-gray-300 transition">Solutions</Link>
           <Link href="/work" className="hover:text-gray-300 transition">Work</Link>
@@ -35,6 +44,6 @@ export default function Navbar() {
         </div>
 
       </div>
-    </motion.nav>
+    </nav>
   );
 }

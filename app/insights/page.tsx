@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Insights",
+  description: "Perspectives on design, technology, and human experience.",
+};
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";

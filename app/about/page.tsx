@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "About",
+  description: "About UNA Creative Hub, our vision and philosophy.",
+};
+
 export default function About() {
   return (
     <main className="pt-32 pb-20 px-6 max-w-6xl mx-auto">

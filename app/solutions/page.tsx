@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Solutions",
+  description: "Future-ready design and immersive creative solutions.",
+};
+
 import Link from "next/link";
 
 const services = [

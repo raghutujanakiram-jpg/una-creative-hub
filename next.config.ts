@@ -1,10 +1,16 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  compress: true,
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  compiler: {
+    removeConsole: true,
+  },
 };
 
 export default nextConfig;

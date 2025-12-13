@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Work",
+  description: "Selected projects and creative systems by UNA Creative Hub.",
+};
+
 import Image from "next/image";
 
 const projects = [

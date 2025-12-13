@@ -1,10 +1,16 @@
+export const metadata = {
+  title: "UNA Creative Hub – Designing the Future of Human Experience",
+  description:
+    "Cinematic, immersive design studio building intelligent creative systems.",
+};
+
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center text-center px-6">
+     <section className="pt-40 pb-32">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
 
@@ -39,7 +45,7 @@ export default function HomePage() {
       </section>
 
       {/* CINEMATIC PAGE END (IMPORTANT) */}
-      <section className="relative py-32">
+      <section className="relative py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
       </section>
     </>

@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Engage",
+  description: "Start your next immersive design project with UNA Creative Hub.",
+};
+
 export default function EngagePage() {
   return (
     <section className="relative px-6 pt-32 pb-40 max-w-3xl mx-auto">
@@ -46,6 +51,12 @@ export default function EngagePage() {
         >
           Submit
         </button>
+        <input aria-label="Name" />
+<input aria-label="Email" />
+<input aria-label="Company" />
+<textarea aria-label="Project details" />
+<button aria-label="Submit form">Submit</button>
+
       </form>
 
       {/* Spacer to guarantee footer visibility */}

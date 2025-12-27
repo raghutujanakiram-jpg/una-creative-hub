@@ -1,53 +1,94 @@
-export const metadata = {
-  title: "UNA Creative Hub – Designing the Future of Human Experience",
-  description:
-    "Cinematic, immersive design studio building intelligent creative systems.",
-};
-
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 
-export default function HomePage() {
+type WorkItem = {
+  slug: string;
+  title: string;
+  description: string;
+  industry?: string;
+  year?: string;
+};
+
+function getWorkItems(): WorkItem[] {
+  const workDir = path.join(process.cwd(), "content/work");
+
+  if (!fs.existsSync(workDir)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(workDir).filter((f) => f.endsWith(".md"));
+
+  return files.map((file) => {
+    const slug = file.replace(".md", "");
+    const raw = fs.readFileSync(path.join(workDir, file), "utf-8");
+
+    const match = (field: string) => {
+      const regex = new RegExp(`${field}:\\s*"(.*?)"`);
+      return raw.match(regex)?.[1] || "";
+    };
+
+    return {
+      slug,
+      title: match("title"),
+      description: match("description"),
+      industry: match("industry"),
+      year: match("year"),
+    };
+  });
+}
+
+export const metadata = {
+  title: "Work",
+  description:
+    "Selected case studies showcasing how UNA Creative Hub designs systems, experiences, and scalable brand platforms.",
+};
+
+export default function WorkPage() {
+  const workItems = getWorkItems();
+
   return (
-    <>
-      {/* HERO */}
-     <section className="pt-40 pb-32">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
+    <main className="px-6 pt-32 pb-40 max-w-6xl mx-auto">
+      {/* Header */}
+      <header className="mb-20 max-w-2xl">
+        <h1 className="text-4xl sm:text-5xl font-semibold mb-6">
+          Selected Work
+        </h1>
+        <p className="text-gray-400 text-lg">
+          A collection of case studies demonstrating how we design systems,
+          experiences, and intelligent brand platforms.
+        </p>
+      </header>
 
-        <div className="relative z-10 max-w-4xl">
-          <h1 className="text-4xl sm:text-6xl font-semibold mb-6">
-            Designing the Future of
-            <br />
-            Human Experience.
-          </h1>
+      {/* Work Grid */}
+      <section className="grid gap-12 md:grid-cols-2">
+        {workItems.map((item) => (
+          <Link
+            key={item.slug}
+            href={`/work/${item.slug}`}
+            className="group block border border-white/10 rounded-2xl p-8 hover:border-white/30 transition"
+          >
+            <div className="mb-4 text-sm text-gray-500">
+              {item.industry && <span>{item.industry}</span>}
+              {item.year && <span className="ml-2">• {item.year}</span>}
+            </div>
 
-          <p className="text-gray-400 text-lg mb-10">
-            A cinematic, immersive design studio delivering intelligent,
-            high-impact creative systems for brands, products, and industries.
+            <h2 className="text-2xl font-medium mb-3 group-hover:underline">
+              {item.title}
+            </h2>
+
+            <p className="text-gray-400">
+              {item.description}
+            </p>
+          </Link>
+        ))}
+
+        {workItems.length === 0 && (
+          <p className="text-gray-500">
+            Case studies coming soon.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/solutions"
-              className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
-            >
-              Explore Solutions
-            </Link>
-
-            <Link
-              href="/engage"
-              className="px-8 py-3 rounded-full border border-white/30 hover:border-white transition"
-            >
-              Start Your Project
-            </Link>
-          </div>
-        </div>
+        )}
       </section>
-
-      {/* CINEMATIC PAGE END (IMPORTANT) */}
-      <section className="relative py-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
-      </section>
-    </>
+    </main>
   );
 }

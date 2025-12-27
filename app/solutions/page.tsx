@@ -1,42 +1,13 @@
-export const metadata = {
-  title: "Solutions",
-  description: "Future-ready design and immersive creative solutions.",
-};
-import Link from "next/link";
-import SectionProgress from "../components/SectionProgress";
-const services = [
-  { title: "Neural Branding Systems", slug: "neural-branding" },
-  { title: "Hyper-Real Digital Humans", slug: "digital-humans" },
-  { title: "XR Commerce & Virtual Retail", slug: "xr-commerce" },
-  { title: "Industrial Digital Twins", slug: "digital-twins" },
-  { title: "Adaptive Experience Design (UI/UX)", slug: "adaptive-ux" },
-  { title: "Spatial Visualization & CGI", slug: "spatial-visualization" },
-  { title: "Influence Design Intelligence", slug: "influence-design" },
-  { title: "Autonomous Experience Pods", slug: "experience-pods" },
-];
+import SectionProgress from "@/app/components/SectionProgress";
 
-export default function Solutions() {
+function SolutionsIntro() {
   return (
-    <main className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-      <h1 className="text-5xl font-semibold mb-6">Solutions</h1>
-      <p className="text-gray-300 max-w-3xl mb-12">
-        Explore our premium portfolio of future-ready design innovation services.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        {services.map((service) => (
-          <Link
-            key={service.slug}
-            href={`/solutions/${service.slug}`}
-            className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition"
-          >
-            <h2 className="text-2xl font-medium">{service.title}</h2>
-          </Link>
-        ))}
-      </div>
-    </main>
+    <section className="min-h-[60vh] flex items-center justify-center">
+      <h1 className="text-5xl font-bold">Our Solutions</h1>
+    </section>
   );
 }
+
 export default function SolutionsPage() {
   return (
     <>
@@ -48,9 +19,19 @@ export default function SolutionsPage() {
         ]}
       />
 
-      <section id="adaptive-ux">...</section>
-      <section id="digital-humans">...</section>
-      <section id="xr-commerce">...</section>
+      <SolutionsIntro />
+
+      <section id="adaptive-ux">
+        {/* content */}
+      </section>
+
+      <section id="digital-humans">
+        {/* content */}
+      </section>
+
+      <section id="xr-commerce">
+        {/* content */}
+      </section>
     </>
   );
 }
